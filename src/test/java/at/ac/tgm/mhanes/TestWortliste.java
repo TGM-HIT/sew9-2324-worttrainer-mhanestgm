@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Es wird das Hinzufügen und Löschen von Paaren als auch getPaar mittels Index getestet.
  *
  * @author Matus Hanes
- * @version 29.09.2023
+ * @version 01.10.2023
  */
 
 public class TestWortliste {
@@ -42,16 +42,16 @@ public class TestWortliste {
     @Test
     @DisplayName("Lösche Paar je nach Reihenfolge")
     void loeschePaar() {
-        WortPaar paar = new WortPaar("Hund", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png");
-        liste.addPaar(paar);
-        assertTrue(liste.removePaar(paar));
+        WortPaar p = new WortPaar("Hund", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png");
+        liste.addPaar(p);
+        assertTrue(liste.removePaar(p));
     }
 
     @Test
     @DisplayName("Wortpaar mit genau zwei Buchstaben in Ordnung")
     void addPaarMitGenauZweiBuchstaben() {
-        WortPaar paar = new WortPaar("Hu", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png");
-        assertTrue(liste.addPaar(paar));
+        WortPaar p = new WortPaar("Hu", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png");
+        assertTrue(liste.addPaar(p));
     }
 
     @Test
@@ -65,8 +65,8 @@ public class TestWortliste {
     @DisplayName("getPaar mit negativem Index")
     void getPaarMitNegativemIndex() {
         liste.clear();
-        WortPaar paar = new WortPaar("Hund", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png");
-        liste.addPaar(paar);
+        WortPaar p = new WortPaar("Hund", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png");
+        liste.addPaar(p);
         assertThrows(IndexOutOfBoundsException.class, () -> liste.getPaar(-1));
     }
 

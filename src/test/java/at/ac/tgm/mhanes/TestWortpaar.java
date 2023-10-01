@@ -10,9 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Diese Klasse ist für das Testen von WortPaar zuständig.
+ * Fürs Prüfen der URLs wird eine Apache-Commons-Dependency verwendet.
+ * Eine URL wird als ungültig gerwertet, wenn das Format passt, unabhängig davon, ob es die URL wirklich gibt.
  *
  * @author Matus Hanes
- * @version 29.09.2023
+ * @version 01.10.2023
  */
 
 public class TestWortpaar {
@@ -41,10 +43,6 @@ public class TestWortpaar {
     void setURLOhneScheme() {
         assertThrows(IllegalArgumentException.class, () -> paar.setURL("abc://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png"));
     }
-
-    /**
-     * Die URL wird als ungültig gerwertet, es werden die Standards geprüft, aber nicht, ob es die URL wirklich gibt.
-     */
 
     @Test
     @DisplayName("URL, die korrekt angegeben wurde übernehmen")
