@@ -7,7 +7,7 @@ import java.util.Random;
  * Die check-Methoden übernehmen ein Wort und schauen, ob dieses mit dem aktuellen Paar übereinstimmt.
  *
  * @author Matus Hanes
- * @version 29.09.2023
+ * @version 01.10.2023
  */
 
 public class Rechtschreibtrainer {
@@ -23,13 +23,12 @@ public class Rechtschreibtrainer {
      * @param liste Der Wert zum Übernehmen
      */
     public Rechtschreibtrainer(WortListe liste) {
+        if (liste == null) {
+            throw new IllegalArgumentException("Es darf kein null für die WortListe übergeben werden.");
+        }
+        this.liste = liste;
         anzCheckTrue = 0;
         anzCheckFalse = 0;
-        if (liste == null) {
-            throw new IllegalArgumentException("Es wurde keine Liste als Parameter übergeben.");
-        } else {
-            this.liste = liste;
-        }
     }
 
     /**
@@ -59,7 +58,7 @@ public class Rechtschreibtrainer {
      */
 
     public boolean check(String wort) {
-        if (wort.equals(paar.getWort())) {
+        if (paar.getWort().equals(wort)) {
             anzCheckTrue++;
             return true;
         }
@@ -74,7 +73,7 @@ public class Rechtschreibtrainer {
      */
 
     public boolean checkIgnoreCase(String wort) {
-        if (wort.equalsIgnoreCase(paar.getWort())) {
+        if (paar.getWort().equalsIgnoreCase(wort)) {
             anzCheckTrue++;
             return true;
         }
