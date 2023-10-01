@@ -1,7 +1,6 @@
 # [GK] 9a.1: Worttrainer Reloaded
 ### Name: Matus Hanes
 ### Klasse: 5DHIT
-### Datum: 20.09.2023
 
 ## Beschreibung
 ### Ziel: Erweitern der Aufgabe aus vorherigen Jahren
