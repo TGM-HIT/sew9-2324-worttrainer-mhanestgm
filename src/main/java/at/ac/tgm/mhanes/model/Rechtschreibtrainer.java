@@ -58,7 +58,7 @@ public class Rechtschreibtrainer {
      */
 
     public boolean check(String wort) {
-        if (paar.getWort().equals(wort)) {
+        if (paar != null && paar.getWort().equals(wort)) {
             anzCheckTrue++;
             return true;
         }
@@ -73,7 +73,7 @@ public class Rechtschreibtrainer {
      */
 
     public boolean checkIgnoreCase(String wort) {
-        if (paar.getWort().equalsIgnoreCase(wort)) {
+        if (paar != null && paar.getWort().equalsIgnoreCase(wort)) {
             anzCheckTrue++;
             return true;
         }
