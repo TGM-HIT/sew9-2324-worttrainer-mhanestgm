@@ -58,7 +58,7 @@ public class TestRechtschreibtrainer {
         WortPaar p2 = new WortPaar("Katze", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png");
 
         liste.addPaar(p1); liste.addPaar(p2);
-        assertEquals(trainer.getRandomPaar(), trainer.getPaarAktuell());
+        assertEquals(trainer.getRandomPaar(), trainer.getAktuellesPaar());
         liste.clear();
     }
 

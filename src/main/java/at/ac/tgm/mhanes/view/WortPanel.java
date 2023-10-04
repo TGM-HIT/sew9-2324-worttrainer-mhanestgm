@@ -24,7 +24,7 @@ import java.awt.Color;
  * Man kann auch den Worttrainer speichern / einen eigenen laden.
  * 
  * @author Matus Hanes
- * @version 02.10.2023
+ * @version 03.10.2023
  *
  */
 public class WortPanel extends JPanel {
@@ -56,17 +56,18 @@ public class WortPanel extends JPanel {
 		grid1.add(feld);
 		super.add(grid1, BorderLayout.PAGE_START);
 		
-        icon = new ImageIcon(new URL("https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png"));
+        icon = new ImageIcon("/speicher/placeholder.png");
         
         image = icon.getImage(); // umwandeln in ein Image-Objekt
         image = image.getScaledInstance(250 * icon.getIconWidth() / icon.getIconHeight(), 250, Image.SCALE_SMOOTH); // Proportionales Skalieren
-        lImage = new JLabel(new ImageIcon(image)); // anzeigen in einem JLabel
+
+		lImage = new JLabel(new ImageIcon(image)); // anzeigen in einem JLabel
     	
     	super.add(lImage, BorderLayout.CENTER);
 
-		 JPanel grid2 = new JPanel(new GridLayout(2, 3, 5, 5));
+		JPanel grid2 = new JPanel(new GridLayout(2, 3, 5, 5));
+		JLabel richtigeText = new JLabel("Richtige Wörter: ");
 
-		 JLabel richtigeText = new JLabel("Richtige Wörter: ");
     	richtigeText.setFont(f);
     	
     	anzRichtig = new JLabel("0");
@@ -118,7 +119,7 @@ public class WortPanel extends JPanel {
     	grid3.add(laden);
     	grid3.add(speichern);
 
-		JLabel link = new JLabel("https://github.com/TGM-HIT/wortliste-mhanestgm");
+		JLabel link = new JLabel("https://github.com/TGM-HIT/sew9-2324-worttrainer-mhanestgm");
     	link.setFont(f);
 		JPanel gridPanel = new JPanel(new GridLayout(3, 1));
     

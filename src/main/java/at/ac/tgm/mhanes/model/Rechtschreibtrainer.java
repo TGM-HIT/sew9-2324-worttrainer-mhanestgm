@@ -7,13 +7,13 @@ import java.util.Random;
  * Die check-Methoden übernehmen ein Wort und schauen, ob dieses mit dem aktuellen Paar übereinstimmt.
  *
  * @author Matus Hanes
- * @version 01.10.2023
+ * @version 03.10.2023
  */
 
 public class Rechtschreibtrainer {
 
     private final WortListe liste;
-    private WortPaar paar;
+    private WortPaar aktuellesPaar;
     private int anzCheckTrue;
     private int anzCheckFalse;
 
@@ -39,8 +39,8 @@ public class Rechtschreibtrainer {
     public WortPaar getRandomPaar() {
         Random r = new Random();
         int index = r.nextInt(liste.length());
-        this.paar = liste.getPaar(index);
-        return paar;
+        this.aktuellesPaar = liste.getPaar(index);
+        return aktuellesPaar;
     }
 
     /**
@@ -48,8 +48,8 @@ public class Rechtschreibtrainer {
      * @return paar
      */
 
-    public WortPaar getPaarAktuell() {
-        return paar;
+    public WortPaar getAktuellesPaar() {
+        return aktuellesPaar;
     }
 
     /**
@@ -58,7 +58,7 @@ public class Rechtschreibtrainer {
      */
 
     public boolean check(String wort) {
-        if (paar != null && paar.getWort().equals(wort)) {
+        if (aktuellesPaar != null && aktuellesPaar.getWort().equals(wort)) {
             anzCheckTrue++;
             return true;
         }
@@ -73,7 +73,7 @@ public class Rechtschreibtrainer {
      */
 
     public boolean checkIgnoreCase(String wort) {
-        if (paar != null && paar.getWort().equalsIgnoreCase(wort)) {
+        if (aktuellesPaar != null && aktuellesPaar.getWort().equalsIgnoreCase(wort)) {
             anzCheckTrue++;
             return true;
         }

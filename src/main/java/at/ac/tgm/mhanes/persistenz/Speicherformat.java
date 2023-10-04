@@ -2,6 +2,8 @@ package at.ac.tgm.mhanes.persistenz;
 
 import at.ac.tgm.mhanes.model.Rechtschreibtrainer;
 
+import java.io.IOException;
+
 /**
  * Strategy-Klasse von der alle weiteren Speicherformate für die Persistenz der Trainerdaten erben können.
  *
@@ -25,13 +27,13 @@ public abstract class Speicherformat {
      * Zum Erstellen einer Datei mittels Dateipfad.
      * @param filepath der Dateipfad
      */
-    public abstract void createFile(String filepath);
+    public abstract void createFile(String filepath) throws IOException;
 
     /**
      * Zum Einlesen einer Datei in den Trainer mittels Dateipfad.
      * @param filepath der Dateipfad
      */
-    public abstract void loadFile(String filepath);
+    public abstract void loadFile(String filepath) throws IOException;
 
     /**
      * Gibt den Trainer zurück.
