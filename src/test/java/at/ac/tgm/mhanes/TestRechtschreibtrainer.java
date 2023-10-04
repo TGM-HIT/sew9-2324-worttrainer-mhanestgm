@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Es wird das Hinzufügen und Löschen von Paaren als auch getPaar mittels Index getestet.
  *
  * @author Matus Hanes
- * @version 02.10.2023
+ * @version 03.10.2023
  */
 
 public class TestRechtschreibtrainer {
@@ -40,7 +40,8 @@ public class TestRechtschreibtrainer {
         int anzP2 = 0;
 
         for (int i = 0; i < 1000; i++) {
-            if (trainer.getRandomPaar() == p1) {
+            trainer.chooseRandomPaar();
+            if (trainer.getAktuellesPaar() == p1) {
                 anzP1++;
                 continue;
             }
@@ -52,17 +53,6 @@ public class TestRechtschreibtrainer {
     }
 
     @Test
-    @DisplayName("Aktuelles Paar stimmt mit dem zufällig ausgewählten überein")
-    void aktuellesPaarStimmtUeberein() {
-        WortPaar p1 = new WortPaar("Hund", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png");
-        WortPaar p2 = new WortPaar("Katze", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png");
-
-        liste.addPaar(p1); liste.addPaar(p2);
-        assertEquals(trainer.getRandomPaar(), trainer.getAktuellesPaar());
-        liste.clear();
-    }
-
-    @Test
     @DisplayName("Prüfen ob Wort in Paar mit kapitalisiert übergebenem nicht übereinstimmt")
     void checkenObWortFalseKapitalisiertGrossKlein() {
         WortPaar p1 = new WortPaar("Hund", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png");
@@ -70,7 +60,7 @@ public class TestRechtschreibtrainer {
         liste.addPaar(p1);
 
         // Aktuelles Paar auswählen
-        trainer.getRandomPaar();
+        trainer.chooseRandomPaar();
 
         // Prüfen ob aktuelles Paar Wort beeinhaltet
         assertFalse(trainer.check("HUND"));
@@ -85,7 +75,7 @@ public class TestRechtschreibtrainer {
         liste.addPaar(p1);
 
         // Aktuelles Paar auswählen
-        trainer.getRandomPaar();
+        trainer.chooseRandomPaar();
 
         // Prüfen ob aktuelles Paar Wort beeinhaltet
         assertTrue(trainer.check("Hund"));
@@ -100,7 +90,7 @@ public class TestRechtschreibtrainer {
         liste.addPaar(p1);
 
         // Aktuelles Paar auswählen
-        trainer.getRandomPaar();
+        trainer.chooseRandomPaar();
 
         // Prüfen ob aktuelles Paar Wort beeinhaltet
         assertTrue(trainer.checkIgnoreCase("HUND"));
@@ -115,7 +105,7 @@ public class TestRechtschreibtrainer {
         liste.addPaar(p1);
 
         // Aktuelles Paar auswählen
-        trainer.getRandomPaar();
+        trainer.chooseRandomPaar();
 
         // Prüfen ob aktuelles Paar Wort beeinhaltet
         assertFalse(trainer.checkIgnoreCase("KATZE"));
@@ -160,7 +150,7 @@ public class TestRechtschreibtrainer {
 
         liste.addPaar(p1);
 
-        trainer.getRandomPaar();
+        trainer.chooseRandomPaar();
 
         // 1 True, 1 False
         trainer.check("Hund");

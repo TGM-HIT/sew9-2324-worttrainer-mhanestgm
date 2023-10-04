@@ -7,7 +7,7 @@ import org.apache.commons.validator.routines.UrlValidator;
  * Eine Instanz/en dieser Klasse wird/en für den Worttrainer und die WortListe verwendet.
  *
  * @author Matus Hanes
- * @version 29.09.2023
+ * @version 03.10.2023
  */
 
 public class WortPaar {
@@ -88,7 +88,7 @@ public class WortPaar {
      * Gibt die URL zurück.
      * @return url
      */
-    public String getURL() {
+    public String getUrl() {
         return url;
     }
 

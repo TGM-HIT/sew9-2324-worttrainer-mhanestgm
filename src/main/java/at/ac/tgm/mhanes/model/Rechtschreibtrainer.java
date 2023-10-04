@@ -32,15 +32,21 @@ public class Rechtschreibtrainer {
     }
 
     /**
-     * Wählt einen zufälliges Paar aus der Liste aus (setzt also einen neuen Wert für das Attribut) und gibt diesen dann anschließend zurück
-     * @return Neuer Paar
+     * Gibt die Liste zurück
+     * @return Liste im Trainer
+     */
+    public WortListe getListe() {
+        return liste;
+    }
+
+    /**
+     * Wählt einen zufälliges Paar aus der Liste aus (setzt also einen neuen Wert für das Attribut)
      */
 
-    public WortPaar getRandomPaar() {
+    public void chooseRandomPaar() {
         Random r = new Random();
         int index = r.nextInt(liste.length());
         this.aktuellesPaar = liste.getPaar(index);
-        return aktuellesPaar;
     }
 
     /**
@@ -113,13 +119,7 @@ public class Rechtschreibtrainer {
         return anzCheckFalse;
     }
 
-    /**
-     * Gibt die Liste zurück
-     * @return Liste im Trainer
-     */
-    public WortListe getListe() {
-        return liste;
-    }
+
 
     
 }

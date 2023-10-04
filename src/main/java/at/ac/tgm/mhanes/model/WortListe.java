@@ -12,13 +12,13 @@ import java.util.ArrayList;
 
 public class WortListe  {
 
-    private final ArrayList<WortPaar> woerter;
+    private final ArrayList<WortPaar> liste;
 
     /**
      * Startwert 0 für Länge der Liste mit den Paaren
      */
     public WortListe() {
-        this.woerter = new ArrayList<>(10);
+        this.liste = new ArrayList<>(10);
     }
 
     /**
@@ -29,7 +29,7 @@ public class WortListe  {
         if (paar == null) {
             throw new IllegalArgumentException("Das Wortpaar darf nicht null sein.");
         }
-        return woerter.add(paar);
+        return liste.add(paar);
     }
 
     /**
@@ -41,7 +41,7 @@ public class WortListe  {
      */
 
     public WortPaar getPaar(int index) {
-        return woerter.get(index);
+        return liste.get(index);
     }
 
     /**
@@ -56,7 +56,7 @@ public class WortListe  {
             throw new IllegalArgumentException("Das Wortpaar darf nicht null sein.");
         }
 
-        return woerter.remove(paar);
+        return liste.remove(paar);
 
     }
 
@@ -70,7 +70,7 @@ public class WortListe  {
 
         StringBuilder ausgabe = new StringBuilder();
         int stelle = 1;
-        for (WortPaar paar : woerter) {
+        for (WortPaar paar : liste) {
             ausgabe.append("[").append(stelle).append("] ").append(paar.toString()).append("\n");
             stelle++;
         }
@@ -83,7 +83,7 @@ public class WortListe  {
      * @return Anzahl Einträge
      */
     public int length() {
-        return woerter.size();
+        return liste.size();
     }
 
     /**
@@ -91,6 +91,15 @@ public class WortListe  {
      */
 
     public void clear() {
-        woerter.clear();
+        liste.clear();
     }
+
+    /**
+     * Gibt die Liste der Wortpaare zurück.
+     * @return die Liste
+     */
+    public ArrayList<WortPaar> getListe() {
+        return liste;
+    }
+
 }

@@ -10,6 +10,7 @@ import at.ac.tgm.mhanes.view.WortPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
@@ -43,17 +44,27 @@ public class WortController implements ActionListener {
 		WortListe liste = new WortListe();
 
 		trainer = new Rechtschreibtrainer(liste);
+        datei = new JSON(trainer);
 
-		liste.addPaar(new WortPaar("Hund", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png"));
-		liste.addPaar(new WortPaar("Katze", "https://media.os.fressnapf.com/cms/2020/05/Ratgeber-Katze-Gesundheit-KatzeWiese_1200x527.jpg"));
+        if (new File("data.json").exists()) {
+            try {
+                datei.loadFile("data.json");
+                System.out.println(datei.getTrainer().getListe());
+            } catch (IOException e) {
+                System.err.println(e.getMessage());
+            }
+        } else {
+            liste.addPaar(new WortPaar("Hund", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png"));
+            liste.addPaar(new WortPaar("Katze", "https://media.os.fressnapf.com/cms/2020/05/Ratgeber-Katze-Gesundheit-KatzeWiese_1200x527.jpg"));
+        }
 
-		datei = new JSON(trainer);
-		WortPaar p = trainer.getRandomPaar();
+        trainer.chooseRandomPaar();
+		WortPaar p = trainer.getAktuellesPaar();
 
         try {
-            panel.setIcon(p.getURL());
+            panel.setIcon(p.getUrl());
         } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 	
@@ -146,7 +157,8 @@ public class WortController implements ActionListener {
                 }
                 if (filepfad != null) {
                     try {
-                        panel.setIcon(trainer.getRandomPaar().getURL());
+                        trainer.chooseRandomPaar();
+                        panel.setIcon(trainer.getAktuellesPaar().getUrl());
                     } catch (MalformedURLException ex) {
                         JOptionPane.showMessageDialog(null, "URL nicht gefunden!", "Fehler", JOptionPane.ERROR_MESSAGE);
                     }
@@ -179,7 +191,8 @@ public class WortController implements ActionListener {
                         JOptionPane.showMessageDialog(null, "Deine Antwort ist richtig.", "Gut gemacht!", JOptionPane.INFORMATION_MESSAGE);
 
                         try {
-                            panel.setIcon(trainer.getRandomPaar().getURL());
+                            trainer.chooseRandomPaar();
+                            panel.setIcon(trainer.getAktuellesPaar().getUrl());
                         } catch (MalformedURLException ex) {
                             JOptionPane.showMessageDialog(null, "URL nicht gefunden!", "Fehler", JOptionPane.ERROR_MESSAGE);
                             System.err.println(ex.getMessage());
