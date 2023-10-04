@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Eine URL wird als ungültig gerwertet, wenn das Format passt, unabhängig davon, ob es die URL wirklich gibt.
  *
  * @author Matus Hanes
- * @version 01.10.2023
+ * @version 03.10.2023
  */
 
 public class TestWortpaar {
@@ -41,7 +41,7 @@ public class TestWortpaar {
     @Test
     @DisplayName("URL mit falscher Scheme (kein http, https oder ftp) liefert Exception")
     void setURLOhneScheme() {
-        assertThrows(IllegalArgumentException.class, () -> paar.setURL("abc://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png"));
+        assertThrows(IllegalArgumentException.class, () -> paar.setUrl("abc://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png"));
     }
 
     @Test

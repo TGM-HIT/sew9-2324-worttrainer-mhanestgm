@@ -23,7 +23,7 @@ public class WortPaar {
 
     public WortPaar(String wort, String url) {
         this.setWort(wort);
-        this.setURL(url);
+        this.setUrl(url);
     }
 
     /**
@@ -65,7 +65,7 @@ public class WortPaar {
      * @throws IllegalArgumentException Wenn der Wert im Parameter null oder weniger als 10 bzw. mehr als 2000 Zeichen hat.
      */
 
-    public void setURL(String url) throws IllegalArgumentException {
+    public void setUrl(String url) throws IllegalArgumentException {
 
         if (checkURL(url)) {
             this.url = url;
