@@ -30,13 +30,13 @@ public class TestJSON {
 
         if (new File("test.json").exists()) {
             datei.loadFile("test.json");
-            WortListe l = datei.getTrainer().getListe();
-            assertEquals(l.getPaar(0).getWort(), "Hund");
-            assertEquals(l.getPaar(1).getWort(), "Katze");
+            liste = datei.getTrainer().getListe();
+            assertEquals(liste.getPaar(0).getWort(), "Hund");
+            assertEquals(liste.getPaar(1).getWort(), "Katze");
         } else {
-            datei.createFile("test.json");
             liste.addPaar(new WortPaar("Hund", "https://www.pinclipart.com/picdir/middle/20-206356_wenn-hund-clipart.png"));
             liste.addPaar(new WortPaar("Katze", "https://media.os.fressnapf.com/cms/2020/05/Ratgeber-Katze-Gesundheit-KatzeWiese_1200x527.jpg"));
+            datei.createFile("test.json");
         }
 
     }
